@@ -67,12 +67,14 @@
     position: absolute;
     z-index: 1;
     -webkit-transform: translate(-200px, 60px);
+    -moz-transform: translate(-200px, 60px);
     transform: translate(-200px, 60px);
     transition: 1s ease;
   }
 
   .nav.open {
     -webkit-transform: translate(0px, 60px);
+    -moz-transform: translate(0px, 60px);
     transform: translate(0px, 60px);
 
   }
@@ -124,13 +126,16 @@
     .nav {
       position: relative;
       -webkit-transform: translate(0, 0);
+      -moz-transform: translate(0, 0);
       transform: translate(0, 0);
       width: 20%;
     }
     body {
       display: -webkit-flex;
+      display: -mox-flex;
       display: flex;
       -webkit-flex-flow: row wrap;
+      -moz-flex-flow: row wrap;
       flex-flow: row wrap;
     }
     #mm {
