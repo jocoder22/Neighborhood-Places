@@ -6,8 +6,6 @@ var result = function(){
   var foursquareUrl2 = 'https://api.foursquare.com/v2/venues/search?limit=80&near=' + myAddress + '&client_id=RMJLP0XC1CPMPOE4IINGN4RSBFUVTP10D1N0OO0RLBCCNPFK&client_secret=2OAXA5CSE43HQRNUYEEFV2FYR3SLB3CHVN0FCLXEGIUVCUUP&v=20170801';
 
   $.getJSON(foursquareUrl2, function(data){
-    format: 'json'
-  }).done(function(data){
     var resultParsed = data.response.venues;
     for (var i = 0; i < resultParsed.length; i++) {
       var resp = resultParsed[i]; var llresp = resp.location;
