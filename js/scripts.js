@@ -74,7 +74,7 @@ setTimeout (function() {
         showInfoWindow(this, infowindowList);
       });
 
-    };
+    }
     map.fitBounds(bounds);
 
     function showInfoWindow(marker, infowindow) {
