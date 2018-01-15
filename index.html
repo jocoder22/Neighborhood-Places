@@ -37,8 +37,10 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="js/knockout-3.2.0.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBizLop2T6ChioBI80RGcWkPEmp07RPtYI&v=3&libraries=places"></script>
     <script type="text/javascript" src="js/scripts.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBizLop2T6ChioBI80RGcWkPEmp07RPtYI&v=3&callback=initMap"
+    async defer onerror="googleMapError()"></script>
+
     <script type="text/javascript">
     var slide = document.getElementById("mm");
     var menu = document.querySelector("#btnn");
