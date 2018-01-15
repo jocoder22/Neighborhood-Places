@@ -71,11 +71,11 @@ setTimeout (function() {
     map.fitBounds(bounds);
 
     function showInfoWindow(marker, infowindowList) {
-      marker.addListener('mouseover', function(){
+      marker.addListener('click', function(){
         infowindowList.setContent(marker.cursor);
         infowindowList.open(map, marker);
-      });
-      marker.addListener('click', function(){
+      // });
+      // marker.addListener('click', function(){
         marker.setAnimation(google.maps.Animation.BOUNCE);
         setTimeout(function () {marker.setAnimation(null);}, 1000);
       });
