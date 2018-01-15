@@ -9,16 +9,13 @@ var result = function(){
     var resultParsed = data.response.venues;
     for (var i = 0; i < resultParsed.length; i++) {
       var resp = resultParsed[i]; var llresp = resp.location;
-      if (resp.contact.formattedPhone && resp.name.length <= 16 && resp.url) {
+      if (resp.contact.formattedPhone && resp.name.length <= 16) {
         AllPlaces.push({
           name: resp.name,
           Address: llresp.formattedAddress,
           Phone: resp.contact.formattedPhone,
           stats: resp.stats,
-          lat: llresp.lat,
-          lng: llresp.lng,
-          latlng:[{lat: llresp.lat, lng: llresp.lng}],
-          url: resp.url});
+          latlng:[{lat: llresp.lat, lng: llresp.lng}]});
           if(AllPlaces.length == 8){
             return false;
           }
@@ -58,38 +55,33 @@ setTimeout (function() {
       var makaddress = myresults[i].Address;
       var maktitle = myresults[i].name;
       var makphone = myresults[i].Phone;
-      var makurl = myresults[i].url;
       var makstats = "checkinsCount : " +  myresults[i].stats.checkinsCount + ", " + " tipCount : " + myresults[i].stats.tipCount + ", " + " usersCount : " + myresults[i].stats.usersCount;
       var marker = new google.maps.Marker({
         position: maklocation,
         map: map,
         name: maktitle,
         animation: google.maps.Animation.DROP,
-        cursor: '<h4>' + maktitle + '</h4>' + makaddress + '<br>' + makphone + '<br>' + makurl + '<br>' + makstats,
+        cursor: '<h4>' + maktitle + '</h4>' + makaddress + '<br>' + makphone + '<br>' + makstats,
         id: i
       });
       markers.push(marker);
       bounds.extend(markers[i].position);
-      marker.addListener('mouseover', function(){
-        showInfoWindow(this, infowindowList);
-      });
-
+      showInfoWindow(marker, infowindowList);
     }
     map.fitBounds(bounds);
 
-    function showInfoWindow(marker, infowindow) {
-    if (infowindow.marker != marker) {
-        infowindow.marker = marker;
-        infowindow.setContent(marker.cursor);
-        infowindow.open(map, marker);
-        marker.addListener('click', function(){
-          marker.setAnimation(google.maps.Animation.BOUNCE);
-          setTimeout(function () {marker.setAnimation(null);}, 1000);
-        });
-        marker.addListener('mouseout', function(){
-          infowindow.close(map, marker);
-        });
-      }
+    function showInfoWindow(marker, infowindowList) {
+      marker.addListener('mouseover', function(){
+        infowindowList.setContent(marker.cursor);
+        infowindowList.open(map, marker);
+      });
+      marker.addListener('click', function(){
+        marker.setAnimation(google.maps.Animation.BOUNCE);
+        setTimeout(function () {marker.setAnimation(null);}, 1000);
+      });
+      marker.addListener('mouseout', function(){
+        infowindowList.close(map, marker);
+      });
     }
   })();
 }, 1000);
