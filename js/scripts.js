@@ -75,7 +75,7 @@ setTimeout (function() {
         infowindowList.setContent(marker.cursor);
         infowindowList.open(map, marker);
         marker.setAnimation(google.maps.Animation.BOUNCE);
-        setTimeout(function () {marker.setAnimation(null);}, 1000);
+        setTimeout(function () {marker.setAnimation(null);}, 1400);
       });
       marker.addListener('mouseout', function(){
         infowindowList.close(map, marker);
