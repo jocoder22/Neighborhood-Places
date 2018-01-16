@@ -96,7 +96,7 @@ var ViewModel = function () {
   self.initialXClass = ko.observable(false);
   self.toggleXClass = function () {
     this.initialXClass(!this.initialXClass());
-  }
+}
 
   setTimeout(function() {
     result.forEach(function(item){
