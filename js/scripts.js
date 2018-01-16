@@ -93,6 +93,10 @@ var ViewModel = function () {
   var self = this;
   self.myPlaces = ko.observableArray([]);
   self.query1 = ko.observable('');
+  self.initialXClass = ko.observable(false);
+  self.toggleXClass = function () {
+    this.initialXClass(!this.initialXClass());
+  }
 
   setTimeout(function() {
     result.forEach(function(item){
