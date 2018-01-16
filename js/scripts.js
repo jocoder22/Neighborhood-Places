@@ -71,11 +71,11 @@ function initMap() {
       infowindowList.close(map, marker);
     });
   }
-};
+}
 
 function MapError() {
   alert("Google Map error.");
-};
+}
 
 
 var ViewModel = function () {
