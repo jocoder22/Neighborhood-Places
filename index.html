@@ -11,12 +11,12 @@
   <body>
     <div class="row">
       <header class="row">
-        <span id="btnn" class="material-icons hhg">list</span>
+        <span data-bind="click: toggleXClass" id="btnn" class="material-icons hhg">list</span>
         <span>Neighborhood Map</span>
       </header>
     </div>
 
-    <div id="drawer" class="nav col2">
+    <div data-bind="css{'open': initialXClass}" id="drawer" class="nav col2">
       <div class="input-group bb">
         <input type="search" class="form-control" placeholder="Filter"  data-bind="value:query1, valueUpdate: 'keyup'" autocomplete="off">
         <div class="input-group-btn">
@@ -38,19 +38,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="js/knockout-3.2.0.js"></script>
     <script type="text/javascript" src="js/scripts.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBizLop2T6ChioBI80RGcWkPEmp07RPtYI&v=3&callback=initMap"
-    async defer onerror="googleMapError()"></script>
-
-    <script type="text/javascript">
-    var slide = document.getElementById("mm");
-    var menu = document.querySelector("#btnn");
-    var main = document.querySelector(".main");
-    var drawer = document.querySelector("#drawer");
-
-    menu.addEventListener('click', function(e) {
-      drawer.classList.toggle('open');
-      e.stopPropagation();
-    });
-    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBizLop2T6ChioBI80RGcWkPEmp07RPtYI&callback=initMap" async defer onerror="MapError()"></script>
   </body>
 </html>
