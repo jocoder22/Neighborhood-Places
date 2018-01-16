@@ -28,15 +28,14 @@
 
 
       <ul data-bind="foreach: filterPlace">
-        <li data-bind="text: name"></li>
+        <li data-bind="text: name, click: $parent.showMarker"></li>
       </ul>
     </div>
 
     <div id="mm" class="main col8"></div>
 
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="js/knockout-3.2.0.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="js/scripts.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBizLop2T6ChioBI80RGcWkPEmp07RPtYI&callback=initMap" async defer onerror="MapError()"></script>
   </body>
