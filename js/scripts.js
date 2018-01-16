@@ -84,6 +84,11 @@ setTimeout (function() {
   })();
 }, 1000);
 
+function MapError() {
+  alert("Google Map error.");
+};
+
+
 var ViewModel = function () {
   var self = this;
   self.myPlaces = ko.observableArray([]);
