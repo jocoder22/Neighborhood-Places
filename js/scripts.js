@@ -80,20 +80,17 @@ function MapError() {
 
 var ViewModel = function () {
   var self = this;
-  self.myPlaces = ko.observableArray([]);
   self.query1 = ko.observable('');
+  self.allMarker = ko.observableArray(markers);
   self.initialXClass = ko.observable(false);
   self.toggleXClass = function () {
     this.initialXClass(!this.initialXClass());
   };
 
-  self.allMarker = ko.observableArray(markers);
-
-  setTimeout(function() {
-    result.forEach(function(item){
-      self.myPlaces.push(item);
-    });
-  }, 500);
+  self.bounceMarker = function (marker) {
+    marker.setAnimation(google.maps.Animation.BOUNCE);
+    setTimeout(function () {marker.setAnimation(null);}, 1400);
+  }
 
   self.filterPlace = ko.computed(function () {
     var myFilter = self.query1().toLowerCase();
