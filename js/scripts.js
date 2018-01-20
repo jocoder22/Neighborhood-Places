@@ -1,4 +1,8 @@
 
+
+var map;
+var markers = [];
+
 //make AJAX call to foursquare API
 var result = function(){
   var AllPlaces = [];
@@ -25,58 +29,29 @@ var result = function(){
     alert( "Failed to connect to Foursquare API : " + xhr.textstatus + " " + errorType + "\n " + exception);
   });
   return AllPlaces;
-}();
+}
 
-
-var map;
-var markers = [];
-var myresults = [result];
 
 function initMap() {
-  map = new google.maps.Map(document.getElementById('mm'), {
-    center: myresults[3].latlng[0],
-    zoom: 15
-  });
-  var bounds = new google.maps.LatLngBounds();
-  var infowindowList = new google.maps.InfoWindow();
-
-  for (var i = 0; i < myresults.length; i++) {
-    var maklocation = myresults[i].latlng[0];
-    var makaddress = myresults[i].Address;
-    var maktitle = myresults[i].name;
-    var makphone = myresults[i].Phone;
-    var makstats = "checkinsCount : " +  myresults[i].stats.checkinsCount + ", " + " tipCount : " + myresults[i].stats.tipCount + ", " + " usersCount : " + myresults[i].stats.usersCount;
-    var marker = new google.maps.Marker({
-      position: maklocation,
-      map: map,
-      name: maktitle,
-      animation: google.maps.Animation.DROP,
-      cursor: '<h4>' + maktitle + '</h4>' + makaddress + '<br>' + makphone + '<br>' + makstats + '<br>' + "source: Foursquare API",
-      id: i
-    });
-    markers.push(marker);
-    bounds.extend(markers[i].position);
-    showInfoWindow(marker, infowindowList);
-  }
-  map.fitBounds(bounds);
-
-  function showInfoWindow(marker, infowindowList) {
-    marker.addListener('click', function(){
-      infowindowList.setContent(marker.cursor);
-      infowindowList.open(map, marker);
-      marker.setAnimation(google.maps.Animation.BOUNCE);
-      setTimeout(function () {marker.setAnimation(null);}, 1400);
-    });
-    marker.addListener('mouseout', function(){
-      infowindowList.close(map, marker);
-    });
-  }
+  map = new google.maps.Map(document.getElementById('mm'))
+  result();
 }
 
 function MapError() {
   alert("Google Map error.");
 }
 
+function showInfoWindow(marker, infowindowList) {
+  marker.addListener('click', function(){
+    infowindowList.setContent(marker.cursor);
+    infowindowList.open(map, marker);
+    marker.setAnimation(google.maps.Animation.BOUNCE);
+    setTimeout(function () {marker.setAnimation(null);}, 1400);
+  });
+  marker.addListener('mouseout', function(){
+    infowindowList.close(map, marker);
+  });
+}
 
 var ViewModel = function () {
   var self = this;
