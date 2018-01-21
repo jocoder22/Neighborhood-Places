@@ -27,35 +27,35 @@ var result = function(){
           name: maktitle,
           animation: google.maps.Animation.DROP,
           cursor: '<h4>' + maktitle + '</h4>' + makaddress + '<br>' + makphone + '<br>' + makstats + '<br>' + "source: Foursquare API",
-          id: i,
-          location: [maklocation]
+          id: i
         });
         if(markers.length == 8){return false;}
         markers.push(marker);
         bounds.extend(marker.position);
         showInfoWindow(marker, infowindowList);
       }
+
       map.fitBounds(bounds);
-      google.maps.event.addDomListener(window, 'resize', function() {
-        map.fitBounds(bounds);
-      });
     }
+    google.maps.event.addDomListener(window, 'resize', function() {
+      map.fitBounds(bounds);
+    });
   }).fail(function(xhr, errorType, exception) {
     alert( "Failed to connect to Foursquare API : " + xhr.textstatus + " " + errorType + "\n " + exception);
   });
   return markers;
-}
+};
 
 
 
 function initMap() {
-    mapOptions = {
-      zoom: 10,
-      center: new google.maps.LatLng(40.733553, -74.196379)
-    }
-    mapDocument = document.getElementById('mm')
-    map = new google.maps.Map(mapDocument, mapOptions);
-    result()
+  mapOptions = {
+    zoom: 10,
+    center: new google.maps.LatLng(40.733553, -74.196379)
+  };
+  result();
+  mapDocument = document.getElementById('mm');
+  map = new google.maps.Map(mapDocument, mapOptions);
 }
 
 function MapError() {
@@ -63,13 +63,12 @@ function MapError() {
 }
 
 
-
 function showInfoWindow(marker, infowindowList) {
   marker.addListener('click', function(){
     infowindowList.setContent(marker.cursor);
     infowindowList.open(map, marker);
     marker.setAnimation(google.maps.Animation.BOUNCE);
-    setTimeout(function () {marker.setAnimation(null);}, 700);
+    setTimeout(function () {marker.setAnimation(null);}, 1400);
   });
   marker.addListener('mouseout', function(){
     infowindowList.close(map, marker);
@@ -88,16 +87,17 @@ var ViewModel = function () {
   };
 
 
-  self.bounceMarker = function (marker, infowindowList) {
+  self.bounceMarker = function (marker) {
     marker.setAnimation(google.maps.Animation.BOUNCE);
     setTimeout(function () {marker.setAnimation(null);}, 1400);
-  }
+  };
 
   setTimeout(function() {
     markers.forEach(function (item) {
       self.allMarker.push(item);
-    })
+    });
   }, 600);
+
 
 
   self.visibleMarkers = function(){
@@ -105,6 +105,7 @@ var ViewModel = function () {
 			marker.setVisible(true);
 		});
 	};
+
 
 
   self.filterPlace = ko.computed(function () {
@@ -120,11 +121,11 @@ var ViewModel = function () {
         } else {
           item.setVisible(false);
           return false;
-        };
+        }
       });
     }
   });
-}
+};
 
 
 
