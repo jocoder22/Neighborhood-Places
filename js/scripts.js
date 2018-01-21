@@ -46,16 +46,7 @@ var result = function(){
   return markers;
 }
 
-console.log(markers);
-console.log(markers[3]);
 
-// function initMap() {
-//   result();
-//   map = new google.maps.Map(document.getElementById('mm'),{
-//     // center: markers[3].location[0],
-//     zoom: 12
-//   });
-// }
 
 function initMap() {
     mapOptions = {
