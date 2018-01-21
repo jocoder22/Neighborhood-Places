@@ -76,7 +76,6 @@ function showInfoWindow(marker, infowindowList) {
   });
 }
 
-console.log(markers);
 
 
 var ViewModel = function () {
@@ -125,12 +124,7 @@ var ViewModel = function () {
       });
     }
   });
-
-
-
-
 }
-
 
 
 
