@@ -47,3 +47,5 @@ Clicking on the map's marker will show an infowindow with the location's informa
 Hovering, clicking on the name of the location on the sidebar or search for location using the input box with display the location on the map as marker with infowindow.
 
 This application is fully responsive across all web browsers and screen sizes.
+
+[Github link](https://jocoder22.github.io/Neighborhood-Places/.)
