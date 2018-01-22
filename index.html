@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <title>My Neighborhood Map</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="css/styles.css">
   </head>
   <body>
@@ -20,7 +20,6 @@
       <div class="input-group bb">
         <input type="search" class="form-control rr" placeholder="Filter"  data-bind="value:query1, valueUpdate: 'keyup'" autocomplete="off">
       </div>
-
 
       <ul data-bind="foreach: filterPlace">
         <li data-bind="text: name, click: $parent.bounceMarker"></li>
