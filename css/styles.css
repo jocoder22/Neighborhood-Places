@@ -4,30 +4,35 @@
   padding: 0;
   font-family: "Times New Roman", Georgia, Serif;
 }
+
 html, body {
   height: 100%;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
 }
+
 .row {
   width: 100%;
   margin: 0px;
   display: flex;
   flex-wrap: wrap;
 }
+
 .col2{
   width: 20%;
   height: 100%;
   margin: 0;
   padding: 0;
 }
+
 .col8 {
   width: 80%;
   height: 100%;
   margin: 0;
   padding: 0;
 }
+
 header {
   background-color: black;
   width: 100%;
@@ -36,6 +41,7 @@ header {
   display: flex;
   flex-flow: wrap;
 }
+
 .hhg {
   margin: 10px;
   color: white;
@@ -71,10 +77,10 @@ header {
   -webkit-transform: translate(0px, 60px);
   -moz-transform: translate(0px, 60px);
   transform: translate(0px, 60px);
-
 }
 
-span, h1 {
+span,
+h1 {
   margin: 15px 0px;
   text-align: center;
 }
@@ -111,6 +117,7 @@ div > li:hover {
 .bb{
   margin: 10px;
 }
+
 .btn {
   background-color: black;
   color: white;
@@ -125,6 +132,7 @@ div > li:hover {
     transform: translate(0, 0);
     width: 20%;
   }
+
   body {
     display: -webkit-flex;
     display: -mox-flex;
@@ -133,16 +141,20 @@ div > li:hover {
     -moz-flex-flow: row wrap;
     flex-flow: row wrap;
   }
+
   #mm {
     width: 80%;
     flex-grow: 1;
   }
+
   .hhg {
     display: none;
   }
+
   span {
     margin: 25px 25px;
   }
+  
   h1 {
   padding-left: 200px;
   }
