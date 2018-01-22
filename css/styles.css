@@ -1,4 +1,4 @@
-
+/* General */
 * {
   margin: 0;
   padding: 0;
@@ -6,7 +6,8 @@
 }
 
 
-html, body {
+html,
+body {
   height: 100%;
   width: 100%;
   display: flex;
@@ -38,6 +39,7 @@ html, body {
 }
 
 
+/* Header */
 .heading {
   background-color: black;
   width: 100%;
@@ -45,6 +47,13 @@ html, body {
   height: 60px;
   display: flex;
   flex-flow: wrap;
+}
+
+
+span,
+h1 {
+  margin: 15px 0px;
+  text-align: center;
 }
 
 
@@ -58,6 +67,7 @@ html, body {
 }
 
 
+/* content */
 .main {
   width: 100%;
   height: 100%;
@@ -84,13 +94,6 @@ html, body {
 }
 
 
-span,
-h1 {
-  margin: 15px 0px;
-  text-align: center;
-}
-
-
 ul {
 list-style: none;
 padding: 0;
@@ -113,7 +116,7 @@ li {
 
 
 li:hover {
-  font-size: 20px;
+  font-size: 18px;
   color: #fff;
   background-color: #0f0e0e;
 }
