@@ -2,12 +2,12 @@
 
 var map;
 var markers = [];
-
+var infowindowList;
 
 //make AJAX call to foursquare API
 var result = function(){
   var bounds = new google.maps.LatLngBounds();
-  var infowindowList = new google.maps.InfoWindow();
+  infowindowList = new google.maps.InfoWindow();
   var myAddress = '383 Springfield Ave, Newark NJ 07103';
   var foursquareUrl2 = 'https://api.foursquare.com/v2/venues/search?limit=80&near=' + myAddress + '&client_id=RMJLP0XC1CPMPOE4IINGN4RSBFUVTP10D1N0OO0RLBCCNPFK&client_secret=2OAXA5CSE43HQRNUYEEFV2FYR3SLB3CHVN0FCLXEGIUVCUUP&v=20170801';
 
@@ -70,9 +70,6 @@ function showInfoWindow(marker, infowindowList) {
     marker.setAnimation(google.maps.Animation.BOUNCE);
     setTimeout(function () {marker.setAnimation(null);}, 1400);
   });
-  marker.addListener('mouseout', function(){
-    infowindowList.close(map, marker);
-  });
 }
 
 
@@ -88,6 +85,9 @@ var ViewModel = function () {
 
 
   self.bounceMarker = function (marker) {
+    map.panTo(marker.position);
+    infowindowList.setContent(marker.cursor);
+    infowindowList.open(map, marker);
     marker.setAnimation(google.maps.Animation.BOUNCE);
     setTimeout(function () {marker.setAnimation(null);}, 1400);
   };
