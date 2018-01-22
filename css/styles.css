@@ -5,12 +5,14 @@
   font-family: "Times New Roman", Georgia, Serif;
 }
 
+
 html, body {
   height: 100%;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
 }
+
 
 .row {
   width: 100%;
@@ -19,12 +21,14 @@ html, body {
   flex-wrap: wrap;
 }
 
+
 .col2{
   width: 20%;
   height: 100%;
   margin: 0;
   padding: 0;
 }
+
 
 .col8 {
   width: 80%;
@@ -33,7 +37,8 @@ html, body {
   padding: 0;
 }
 
-header {
+
+.heading {
   background-color: black;
   width: 100%;
   color: white;
@@ -41,6 +46,7 @@ header {
   display: flex;
   flex-flow: wrap;
 }
+
 
 .hhg {
   margin: 10px;
@@ -57,6 +63,7 @@ header {
   height: 100%;
 }
 
+
 .nav {
   background-color: black;
   width: 200px;
@@ -69,11 +76,13 @@ header {
   transition: 1s ease;
 }
 
+
 .nav.open {
   -webkit-transform: translate(0px, 60px);
   -moz-transform: translate(0px, 60px);
   transform: translate(0px, 60px);
 }
+
 
 span,
 h1 {
@@ -81,11 +90,13 @@ h1 {
   text-align: center;
 }
 
+
 ul {
 list-style: none;
 padding: 0;
 margin: 0;
 }
+
 
 li {
   text-align: center;
@@ -100,12 +111,13 @@ li {
   cursor:  pointer;
 }
 
+
 li:hover {
   font-size: 20px;
   color: #fff;
   background-color: #0f0e0e;
-
 }
+
 
 .bb {
   margin: 10px;
