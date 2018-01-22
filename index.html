@@ -11,19 +11,14 @@
   <body>
     <div class="row">
       <header class="row">
-        <span data-bind="click: toggleXClass" id="btnn" class="material-icons hhg">list</span>
+        <span data-bind="click: toggleXClass" class="material-icons hhg">list</span>
         <h1>Neighborhood Map</h1>
       </header>
     </div>
 
-    <div data-bind="css{'open': initialXClass}" id="drawer" class="nav col2">
+    <div data-bind="css{'open': initialXClass}" class="nav col2">
       <div class="input-group bb">
-        <input type="search" class="form-control" placeholder="Filter"  data-bind="value:query1, valueUpdate: 'keyup'" autocomplete="off">
-        <div class="input-group-btn">
-          <i class="btn" type="submit">
-            <i class="glyphicon glyphicon-search"></i>
-          </i>
-        </div>
+        <input type="search" class="form-control rr" placeholder="Filter"  data-bind="value:query1, valueUpdate: 'keyup'" autocomplete="off">
       </div>
 
 
@@ -33,11 +28,9 @@
     </div>
 
     <div id="mm" class="main col8"></div>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBizLop2T6ChioBI80RGcWkPEmp07RPtYI&callback=initMap"  defer onerror="MapError()"></script>
-
-    <script type="text/javascript" src="js/knockout-3.2.0.js"></script>
+    <script src="js/knockout-3.2.0.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="js/scripts.js"></script>
-    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBizLop2T6ChioBI80RGcWkPEmp07RPtYI&callback=initMap" async defer onerror="MapError()"></script> -->
+    <script src="js/scripts.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBizLop2T6ChioBI80RGcWkPEmp07RPtYI&callback=initMap" async defer onerror="MapError()"></script>
   </body>
 </html>
