@@ -1,15 +1,19 @@
+/*property
+    InfoWindow, LatLngBounds, getJSON, maps, response, venues
+*/
 
-
-var map;
-var markers = [];
-var infowindowList;
+"use strict";
+// var map;
+// var markers = [];
+// var infowindowList;
+global infowindowList, map, markers, result
 
 //make AJAX call to foursquare API
 var result = function(){
   var bounds = new google.maps.LatLngBounds();
   infowindowList = new google.maps.InfoWindow();
-  var myAddress = '383 Springfield Ave, Newark NJ 07103';
-  var foursquareUrl2 = 'https://api.foursquare.com/v2/venues/search?limit=80&near=' + myAddress + '&client_id=RMJLP0XC1CPMPOE4IINGN4RSBFUVTP10D1N0OO0RLBCCNPFK&client_secret=2OAXA5CSE43HQRNUYEEFV2FYR3SLB3CHVN0FCLXEGIUVCUUP&v=20170801';
+  var myAddress = "383 Springfield Ave, Newark NJ 07103";
+  var foursquareUrl2 = "https://api.foursquare.com/v2/venues/search?limit=80&near=" + myAddress + "&client_id=RMJLP0XC1CPMPOE4IINGN4RSBFUVTP10D1N0OO0RLBCCNPFK&client_secret=2OAXA5CSE43HQRNUYEEFV2FYR3SLB3CHVN0FCLXEGIUVCUUP&v=20170801";
 
   $.getJSON(foursquareUrl2, function(data){
     var resultParsed = data.response.venues;
@@ -26,7 +30,7 @@ var result = function(){
           map: map,
           name: maktitle,
           animation: google.maps.Animation.DROP,
-          cursor: '<h4>' + maktitle + '</h4>' + makaddress + '<br>' + makphone + '<br>' + makstats + '<br>' + "source: Foursquare API",
+          cursor: "<h4>" + maktitle + "</h4>" + makaddress + "<br>" + makphone + "<br>" + makstats + "<br>" + "source: Foursquare API",
           id: i
         });
         markers.push(marker);
@@ -36,7 +40,7 @@ var result = function(){
 
       map.fitBounds(bounds);
     }
-    google.maps.event.addDomListener(window, 'resize', function() {
+    google.maps.event.addDomListener(window, "resize", function() {
       map.fitBounds(bounds);
     });
   }).fail(function(xhr, errorType, exception) {
@@ -53,7 +57,7 @@ function initMap() {
     center: new google.maps.LatLng(40.733553, -74.196379)
   };
   result();
-  mapDocument = document.getElementById('mm');
+  mapDocument = document.getElementById("mm");
   map = new google.maps.Map(mapDocument, mapOptions);
 }
 
@@ -63,7 +67,7 @@ function MapError() {
 
 
 function showInfoWindow(marker) {
-  marker.addListener('click', function(){
+  marker.addListener("click", function(){
     infowindowList.setContent(marker.cursor);
     infowindowList.open(map, marker);
     marker.setAnimation(google.maps.Animation.BOUNCE);
@@ -74,7 +78,7 @@ function showInfoWindow(marker) {
 
 var ViewModel = function () {
   var self = this;
-  self.query1 = ko.observable('');
+  self.query1 = ko.observable("");
   self.allMarker = ko.observableArray([]);
   self.initialXClass = ko.observable(false);
   self.toggleXClass = function () {
