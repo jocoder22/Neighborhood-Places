@@ -15,7 +15,7 @@ var result = function(){
     var resultParsed = data.response.venues;
     for (var i = 0; i < resultParsed.length; i++) {
       var resp = resultParsed[i]; var llresp = resp.location;
-      if (resp.contact.formattedPhone && resp.name.length <= 16) {
+      if (resp.contact.formattedPhone && resp.name.length <= 12) {
         var maklocation = {lat: llresp.lat, lng: llresp.lng};
         var makaddress = llresp.formattedAddress;
         var maktitle = resp.name;
@@ -29,7 +29,6 @@ var result = function(){
           cursor: '<h4>' + maktitle + '</h4>' + makaddress + '<br>' + makphone + '<br>' + makstats + '<br>' + "source: Foursquare API",
           id: i
         });
-        if(markers.length == 8){return false;}
         markers.push(marker);
         bounds.extend(marker.position);
         showInfoWindow(marker, infowindowList);
