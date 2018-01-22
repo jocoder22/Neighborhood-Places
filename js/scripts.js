@@ -31,7 +31,7 @@ var result = function(){
         });
         markers.push(marker);
         bounds.extend(marker.position);
-        showInfoWindow(marker, infowindowList);
+        showInfoWindow(marker);
       }
 
       map.fitBounds(bounds);
@@ -62,7 +62,7 @@ function MapError() {
 }
 
 
-function showInfoWindow(marker, infowindowList) {
+function showInfoWindow(marker) {
   marker.addListener('click', function(){
     infowindowList.setContent(marker.cursor);
     infowindowList.open(map, marker);
@@ -70,7 +70,6 @@ function showInfoWindow(marker, infowindowList) {
     setTimeout(function () {marker.setAnimation(null);}, 1400);
   });
 }
-
 
 
 var ViewModel = function () {
@@ -84,7 +83,6 @@ var ViewModel = function () {
 
 
   self.bounceMarker = function (marker) {
-    map.panTo(marker.position);
     infowindowList.setContent(marker.cursor);
     infowindowList.open(map, marker);
     marker.setAnimation(google.maps.Animation.BOUNCE);
@@ -95,7 +93,7 @@ var ViewModel = function () {
     markers.forEach(function (item) {
       self.allMarker.push(item);
     });
-  }, 600);
+  }, 400);
 
 
 
