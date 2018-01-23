@@ -1,12 +1,9 @@
-/*property
-    InfoWindow, LatLngBounds, getJSON, maps, response, venues
-*/
 
 "use strict";
-// var map;
-// var markers = [];
-// var infowindowList;
-global infowindowList, map, markers, result
+var map;
+var markers = [];
+var infowindowList;
+
 
 //make AJAX call to foursquare API
 var result = function(){
@@ -43,6 +40,7 @@ var result = function(){
     google.maps.event.addDomListener(window, "resize", function() {
       map.fitBounds(bounds);
     });
+    ko.applyBindings(new ViewModel());
   }).fail(function(xhr, errorType, exception) {
     alert( "Failed to connect to Foursquare API : " + xhr.textstatus + " " + errorType + "\n " + exception);
   });
@@ -52,12 +50,12 @@ var result = function(){
 
 
 function initMap() {
-  mapOptions = {
+  var mapOptions = {
     zoom: 10,
     center: new google.maps.LatLng(40.733553, -74.196379)
   };
   result();
-  mapDocument = document.getElementById("mm");
+  var mapDocument = document.getElementById("mm");
   map = new google.maps.Map(mapDocument, mapOptions);
 }
 
@@ -86,6 +84,11 @@ var ViewModel = function () {
   };
 
 
+  markers.forEach(function (item) {
+    self.allMarker.push(item);
+  });
+
+
   self.bounceMarker = function (marker) {
     infowindowList.setContent(marker.cursor);
     infowindowList.open(map, marker);
@@ -93,11 +96,11 @@ var ViewModel = function () {
     setTimeout(function () {marker.setAnimation(null);}, 1400);
   };
 
-  setTimeout(function() {
-    markers.forEach(function (item) {
-      self.allMarker.push(item);
-    });
-  }, 400);
+  // setTimeout(function() {
+  //   markers.forEach(function (item) {
+  //     self.allMarker.push(item);
+  //   });
+  // }, 400);
 
 
 
@@ -120,6 +123,7 @@ var ViewModel = function () {
           item.setVisible(true);
           return true;
         } else {
+          infowindowList.close(map, item);
           item.setVisible(false);
           return false;
         }
@@ -130,4 +134,4 @@ var ViewModel = function () {
 
 
 
-ko.applyBindings(new ViewModel());
+// ko.applyBindings(new ViewModel());
