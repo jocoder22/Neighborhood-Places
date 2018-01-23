@@ -1,5 +1,4 @@
 
-"use strict";
 var map;
 var markers = [];
 var infowindowList;
@@ -95,13 +94,6 @@ var ViewModel = function () {
     marker.setAnimation(google.maps.Animation.BOUNCE);
     setTimeout(function () {marker.setAnimation(null);}, 1400);
   };
-
-  // setTimeout(function() {
-  //   markers.forEach(function (item) {
-  //     self.allMarker.push(item);
-  //   });
-  // }, 400);
-
 
 
   self.visibleMarkers = function(){
