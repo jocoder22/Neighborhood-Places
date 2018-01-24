@@ -64,53 +64,52 @@ function MapError() {
 
 
 function showInfoWindow(marker) {
-  marker.addListener("click", function(){
+  marker.addListener("click", () => {
     infowindowList.setContent(marker.cursor);
     infowindowList.open(map, marker);
     marker.setAnimation(google.maps.Animation.BOUNCE);
-    setTimeout(function () {marker.setAnimation(null);}, 1400);
+    setTimeout(() => {marker.setAnimation(null);}, 1400);
   });
 }
 
 
 var ViewModel = function () {
-  var self = this;
-  self.query1 = ko.observable("");
-  self.allMarker = ko.observableArray([]);
-  self.initialXClass = ko.observable(false);
-  self.toggleXClass = function () {
+  this.query1 = ko.observable("");
+  this.allMarker = ko.observableArray([]);
+  this.initialXClass = ko.observable(false);
+  this.toggleXClass = () => {
     this.initialXClass(!this.initialXClass());
   };
 
 
-  markers.forEach(function (item) {
-    self.allMarker.push(item);
+  markers.forEach((item) => {
+    this.allMarker.push(item);
   });
 
 
-  self.bounceMarker = function (marker) {
+  this.bounceMarker = (marker) => {
     infowindowList.setContent(marker.cursor);
     infowindowList.open(map, marker);
     marker.setAnimation(google.maps.Animation.BOUNCE);
-    setTimeout(function () {marker.setAnimation(null);}, 1400);
+    setTimeout(() => {marker.setAnimation(null);}, 1400);
   };
 
 
-  self.visibleMarkers = function(){
-		self.allMarker().forEach(function(marker){
+  this.visibleMarkers = () => {
+		this.allMarker().forEach((marker) => {
 			marker.setVisible(true);
 		});
 	};
 
 
 
-  self.filterPlace = ko.computed(function () {
-    var myFilter = self.query1().toLowerCase();
+  this.filterPlace = ko.computed(() => {
+    var myFilter = this.query1().toLowerCase();
     if (!myFilter) {
-      self.visibleMarkers();
-      return self.allMarker();
+      this.visibleMarkers();
+      return this.allMarker();
     } else {
-       return ko.utils.arrayFilter(self.allMarker(), function(item) {
+       return ko.utils.arrayFilter(this.allMarker(),(item) => {
         if (item.name.toLowerCase().indexOf(myFilter) >= 0) {
           item.setVisible(true);
           return true;
@@ -123,7 +122,3 @@ var ViewModel = function () {
     }
   });
 };
-
-
-
-// ko.applyBindings(new ViewModel());
